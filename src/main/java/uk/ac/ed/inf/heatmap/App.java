@@ -1,7 +1,7 @@
 package uk.ac.ed.inf.heatmap;
 
 /**
- * Hello world!
+ * Hello ILP!
  *
  */
 public class App 
