@@ -29,10 +29,8 @@ public class GeoMapper {
 		}
 }
 
-	GeoMapper() {
-	}
 
-	Polygon[][] generateHeatmap(int[][] data) {
+	public static Polygon[][] generateHeatmap(int[][] data) {
 		Polygon[][] heatmap = new Polygon[10][10];
 
 		//
@@ -45,18 +43,18 @@ public class GeoMapper {
 		return heatmap;
 	}
 
-	Polygon generatePoly(int value, int lat, int lng) {
-		
-		List<List<Point>> corners=new ArrayList<>();
-		
-		corners.add(Arrays.asList(new Point[]{vertices[lat][lng],vertices[lat][lng+1]}));
-		corners.add(Arrays.asList(new Point[]{vertices[lat+1][lng],vertices[lat+1][lng+1]}));
-		
-		
-		Polygon rect=Polygon.fromLngLats(corners);
-		rect.
-		
-		return rect;
-	}
+//	Polygon generatePoly(int value, int lat, int lng) {
+//		
+//		List<List<Point>> corners=new ArrayList<>();
+//		
+//		corners.add(Arrays.asList(new Point[]{vertices[lat][lng],vertices[lat][lng+1]}));
+//		corners.add(Arrays.asList(new Point[]{vertices[lat+1][lng],vertices[lat+1][lng+1]}));
+//		
+//		
+//		Polygon rect=Polygon.fromLngLats(corners);
+//		rect.
+//		
+//		return rect;
+//	}
 
 }

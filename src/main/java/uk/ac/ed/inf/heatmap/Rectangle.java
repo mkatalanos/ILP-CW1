@@ -7,10 +7,13 @@ import java.util.List;
 import com.mapbox.geojson.Point;
 import com.mapbox.geojson.Polygon;
 
-public class Rectangle {
+public class Rectangle{
 
 	String color;
 	Polygon shape;
+	
+	static Point[][] vertices=GeoMapper.vertices;
+
 
 	Rectangle(int value, int lat, int lng) {
 		List<List<Point>> corners = new ArrayList<>();
