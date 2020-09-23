@@ -17,7 +17,8 @@ public class App {
 		}
 	
 		
-		GeoMapper gm=new GeoMapper(data);
+		GeoMapper gm=new GeoMapper();
+		
 		
 		
 		
