@@ -17,16 +17,21 @@ public class App {
 			System.out.println("File not found!");
 			return;
 		}
-	
-		
-		FeatureCollection heatmap=GeoMapper.generateHeatmap(data);
-		
-		for(int[] line: data) {
-			for (int x : line)
-				System.out.printf("%d ",x);
-			System.out.println();
+
+		FeatureCollection heatmap = GeoMapper.generateHeatmap(data);
+
+//		for(int[] line: data) {
+//			for (int x : line)
+//				System.out.printf("%d ",x);
+//			System.out.println();
+//		}
+//		
+//		System.out.println(heatmap.toJson());
+		Writer w = new Writer(heatmap);
+		try {
+			w.writeToFile();
+		} catch (IOException e) {
+			System.out.println("COULD NOT MAKE FILE!");
 		}
-		
-		System.out.println(heatmap.toJson());
 	}
 }
