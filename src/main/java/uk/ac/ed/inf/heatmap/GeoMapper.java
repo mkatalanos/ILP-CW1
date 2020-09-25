@@ -4,12 +4,15 @@ import java.util.List;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
 import com.mapbox.geojson.Polygon;
 
 public class GeoMapper {
-	private static Point[] corners = { Point.fromLngLat(55.946233, -3.192473), // Forrest Hill
-			Point.fromLngLat(55.942617, -3.184319)// Buccleuch St bus stop
+	private static Point[] corners = { Point.fromLngLat(-3.192473,55.946233), // Forrest Hill
+			Point.fromLngLat(-3.184319,55.942617)// Buccleuch St bus stop
 	};
 
 	static Point[][] vertices;
@@ -27,34 +30,20 @@ public class GeoMapper {
 				vertices[lat][lng] = Point.fromLngLat(longitude, latitude);
 			}
 		}
-}
+	}
 
-
-	public static Polygon[][] generateHeatmap(int[][] data) {
-		Polygon[][] heatmap = new Polygon[10][10];
-
+	public static FeatureCollection generateHeatmap(int[][] data) {
+		List<Feature> heatmap = new ArrayList<>();
+		FeatureGenerator fg = new FeatureGenerator(vertices, data);
 		//
 		for (int lat = 0; lat < 10; lat++) {
 			for (int lng = 0; lng < 10; lng++) {
-//				heatmap[lat][lng] = new Rectangle(data[lat][lng],lat,lng);
+				heatmap.add(fg.generateFeature(lng, lat));
 			}
 		}
-
-		return heatmap;
+		
+		FeatureCollection collection=FeatureCollection.fromFeatures(heatmap);
+		return collection;
 	}
-
-//	Polygon generatePoly(int value, int lat, int lng) {
-//		
-//		List<List<Point>> corners=new ArrayList<>();
-//		
-//		corners.add(Arrays.asList(new Point[]{vertices[lat][lng],vertices[lat][lng+1]}));
-//		corners.add(Arrays.asList(new Point[]{vertices[lat+1][lng],vertices[lat+1][lng+1]}));
-//		
-//		
-//		Polygon rect=Polygon.fromLngLats(corners);
-//		rect.
-//		
-//		return rect;
-//	}
 
 }

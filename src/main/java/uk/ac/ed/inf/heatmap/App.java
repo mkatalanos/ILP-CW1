@@ -2,6 +2,8 @@ package uk.ac.ed.inf.heatmap;
 
 import java.io.IOException;
 
+import com.mapbox.geojson.FeatureCollection;
+
 //Main Program
 
 public class App {
@@ -17,10 +19,14 @@ public class App {
 		}
 	
 		
-		GeoMapper gm=new GeoMapper();
+		FeatureCollection heatmap=GeoMapper.generateHeatmap(data);
 		
+		for(int[] line: data) {
+			for (int x : line)
+				System.out.printf("%d ",x);
+			System.out.println();
+		}
 		
-		
-		
+		System.out.println(heatmap.toJson());
 	}
 }

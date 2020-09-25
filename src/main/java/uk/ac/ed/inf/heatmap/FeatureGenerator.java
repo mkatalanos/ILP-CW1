@@ -24,7 +24,7 @@ public class FeatureGenerator {
 		if (0 <= x && x < 32)
 			s = "#00ff00";
 		else if (32 <= x && x < 64)
-			s = "$40ff00";
+			s = "#40ff00";
 		else if (64 <= x && x < 96)
 			s = "#80ff00";
 		else if (96 <= x && x < 128)
@@ -38,7 +38,7 @@ public class FeatureGenerator {
 		else if (224 <= x && x < 256)
 			s = "#ff0000";
 		else
-			s = "#000000";
+			s = "#00ff00";
 		return s;
 	}
 
