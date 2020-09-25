@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.Geometry;
 
 public class FeatureGenerator {
 	Point[][] vertices; // vertices[lat][lng]
@@ -81,7 +82,13 @@ public class FeatureGenerator {
 	}
 
 	Feature generateFeature(int lng, int lat) {
+		String color = colorFromData(this.data[lat][lng]);
+		Polygon poly = generatePolygon(lng, lat);
+		Feature f = Feature.fromGeometry((Geometry) poly);
+		f.addNumberProperty("fill-opacity", 0.75);
+		f.addStringProperty("rgb-string", color);
+		f.addStringProperty("fill", color);
 
-		return null;
+		return f;
 	}
 }
