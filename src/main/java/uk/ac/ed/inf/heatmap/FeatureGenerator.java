@@ -38,7 +38,7 @@ public class FeatureGenerator {
 		else if (224 <= x && x < 256)
 			s = "#ff0000";
 		else
-			s = "#00ff00";
+			s = "#000000";
 		return s;
 	}
 

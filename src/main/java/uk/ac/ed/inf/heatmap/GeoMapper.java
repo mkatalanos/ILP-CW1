@@ -3,12 +3,9 @@ package uk.ac.ed.inf.heatmap;
 import java.util.List;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.Point;
-import com.mapbox.geojson.Polygon;
 
 public class GeoMapper {
 	private static Point[] corners = { Point.fromLngLat(-3.192473,55.946233), // Forrest Hill
