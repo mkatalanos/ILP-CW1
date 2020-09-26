@@ -19,7 +19,7 @@ public class FeatureGenerator {
 		this.data = data;
 	}
 
-	String colorFromData(int x) {
+	private String colorFromData(int x) {
 		String s = "";
 		if (0 <= x && x < 32)
 			s = "#00ff00";
@@ -69,7 +69,7 @@ public class FeatureGenerator {
 		return points;
 	}
 
-	Polygon generatePolygon(int lng, int lat) {
+	private Polygon generatePolygon(int lng, int lat) {
 		List<Point> lines = new ArrayList<>();
 		for (int side = 0; side <= 3; side++) {
 			lines.addAll(generateLine(lng, lat, side));
@@ -81,7 +81,7 @@ public class FeatureGenerator {
 		return poly;
 	}
 
-	Feature generateFeature(int lng, int lat) {
+	protected Feature generateFeature(int lng, int lat) {
 		String color = colorFromData(this.data[lat][lng]);
 		Polygon poly = generatePolygon(lng, lat);
 		Feature f = Feature.fromGeometry((Geometry) poly);
