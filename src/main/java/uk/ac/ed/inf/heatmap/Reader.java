@@ -36,7 +36,11 @@ public final class Reader {
 		int line = 0;
 		String nextLine = br.readLine();
 		while (nextLine != null && line < Settings.latDim) {
-			String[] substring = nextLine.replace(" ", "").split(",");
+//			String[] substring = nextLine.replace(" ", "").replaceAll("[^0-9]+", " ").split(" ");
+			String[] substring = nextLine.split("[^0-9]+");
+
+			for (String s : substring)
+				System.out.println(s);
 			int itLength = Math.min(substring.length, Settings.lngDim);
 			for (int i = 0; i < itLength; i++)
 				data[line][i] = Integer.parseInt(substring[i]);

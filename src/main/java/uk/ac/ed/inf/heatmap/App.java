@@ -56,7 +56,5 @@ public class App {
 			System.out.println(heatmap.toJson());
 			return;
 		}
-		
-		System.out.println(Integer.parseInt(" 1"));
 	}
 }
