@@ -4,9 +4,25 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Reader {
-
-	static int[][] scanFile(String filename) throws IOException {
+/**
+ * Class that holds the function that reads and parses files
+ * 
+ * @author Marios Katalanos
+ * 
+ *
+ */
+public final class Reader {
+	/**
+	 * This method attempts to open a file, which then parses line by line and puts
+	 * it in a 2x2 matrix with dimensions specified by the Settings.java file
+	 * 
+	 * @param filename The file name to be read.
+	 * @return A 2x2 matrix with dimensions specified by Settings.java which
+	 *         contains the data from the file. In case of incomplete data it fills
+	 *         the spot with -1.
+	 * @throws IOException In case the file is not found
+	 */
+	public static int[][] scanFile(String filename) throws IOException {
 		int[][] data = new int[Settings.latDim][Settings.lngDim]; // data[lat][lng]
 
 		// Initialize with -1 in case there's data missing from the file

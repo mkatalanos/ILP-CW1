@@ -5,8 +5,24 @@ import java.io.IOException;
 import com.mapbox.geojson.FeatureCollection;
 
 //Main Program
-
+/**
+ * Coursework 1: heatmap
+ * 
+ * @author Marios Katalanos
+ */
 public class App {
+
+	/**
+	 * The main Program starts by trying to read the file. If this fails an error
+	 * message is printed to the console and the program exits. If it succeeds then
+	 * the read data are used to generate a heatmap. Afterwards it attempts to write
+	 * the generated heatmap to a file in a geojson form. If it fails then it just
+	 * prints it out to the console.
+	 * 
+	 * 
+	 * @param args - It should be the full path to the file needed for processing.
+	 * 
+	 */
 	public static void main(String[] args) {
 		// Note to adjust the resolution of the matrix please adjust the Settings.java
 		// file
@@ -40,5 +56,7 @@ public class App {
 			System.out.println(heatmap.toJson());
 			return;
 		}
+		
+		System.out.println(Integer.parseInt(" 1"));
 	}
 }

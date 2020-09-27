@@ -10,15 +10,41 @@ import java.util.List;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Geometry;
 
+/**
+ * This is class is used to generate the features that are used in GeoMapper. It
+ * contains private methods that are used as tools for aiding the creation of
+ * such features. It also contains a function that is used for actually creating
+ * a feature.
+ * 
+ * @author Marios Katalanos
+ *
+ */
 public class FeatureGenerator {
-	Point[][] vertices; // vertices[lat][lng]
-	int[][] data;
 
+	private Point[][] vertices; // vertices[lat][lng]
+	private int[][] data;
+
+	/**
+	 * Constructor for FeatureGenerator
+	 * 
+	 * @param vertices A 2x2 matrix which contains points which could become
+	 *                 vertices. Has dimensions from Settings.java increased by one
+	 *                 to account for the outer right and bottom edges.
+	 * @param data     A 2x2 matrix with dimensions from Settings.java which
+	 *                 contains the data to be visualised.
+	 */
 	FeatureGenerator(Point[][] vertices, int[][] data) {
 		this.vertices = vertices;
 		this.data = data;
 	}
 
+	/**
+	 * This method maps a value to a color. If a value does not map to anything
+	 * black is used.
+	 * 
+	 * @param x The value to be mapped
+	 * @return A string that contains the color in the form '#rrggbb'
+	 */
 	private String colorFromData(int x) {
 		String s = "";
 		if (0 <= x && x < 32)
