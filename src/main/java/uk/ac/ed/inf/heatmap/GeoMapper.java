@@ -12,13 +12,13 @@ public class GeoMapper {
 
 	static Point[][] vertices;
 	static {
-		vertices = new Point[Settings.latDim+1][Settings.lngDim+1];
+		vertices = new Point[Settings.latDim + 1][Settings.lngDim + 1];
 		double longDist = (corners[1].longitude() - corners[0].longitude()) / Settings.lngDim;
 		double latDist = (corners[1].latitude() - corners[0].latitude()) / Settings.latDim;
 
 		// Vertex[lat][long]
-		for (int lat = 0; lat < Settings.latDim+1; lat++) {
-			for (int lng = 0; lng < Settings.lngDim+1; lng++) {
+		for (int lat = 0; lat < Settings.latDim + 1; lat++) {
+			for (int lng = 0; lng < Settings.lngDim + 1; lng++) {
 				double longitude = corners[0].longitude() + lng * longDist;
 				double latitude = corners[0].latitude() + lat * latDist;
 
@@ -36,8 +36,8 @@ public class GeoMapper {
 				heatmap.add(fg.generateFeature(lng, lat));
 			}
 		}
-		
-		FeatureCollection collection=FeatureCollection.fromFeatures(heatmap);
+
+		FeatureCollection collection = FeatureCollection.fromFeatures(heatmap);
 		return collection;
 	}
 
