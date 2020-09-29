@@ -68,6 +68,17 @@ public class FeatureGenerator {
 		return s;
 	}
 
+	/**
+	 * Creates a list that contains two points that form a line.
+	 * 
+	 * @param lng  Longitude index that corresponds to a longitude index from the
+	 *             data matrix
+	 * @param lat  Latitude index that corresponds to a latitude index from the data
+	 *             matrix
+	 * @param side 0,1,2,3,4 According to which side of the rectangle you wish to
+	 *             create starting from TOP being 0 going clockwise.
+	 * @return A list of points that form a line with length 2.
+	 */
 	private List<Point> generateLine(int lng, int lat, int side) {
 		List<Point> points = new ArrayList<>();
 
@@ -95,25 +106,47 @@ public class FeatureGenerator {
 		return points;
 	}
 
+	/**
+	 * Create a polygon at the given location. Note the given indexes should not be
+	 * at the outer edge of the vertices matrix.
+	 * 
+	 * @param lng Longitude index from the vertices matrix which points to the top
+	 *            left corner of the polygon.
+	 * @param lat Latitude index from the vertices matrix which points to the top
+	 *            left corner of the polygon.
+	 * @return A Polygon object with 4 sides with it's top left corner being at the
+	 *         Point pointed from vertices[lat][lng].
+	 */
 	private Polygon generatePolygon(int lng, int lat) {
-		List<Point> lines = new ArrayList<>();
+		List<Point> linepoints = new ArrayList<>(); // Create a list of points that will hold the 4 lines.
 		for (int side = 0; side <= 3; side++) {
-			lines.addAll(generateLine(lng, lat, side));
+			linepoints.addAll(generateLine(lng, lat, side)); // Add the points that form the lines of each side.
 		}
 
-		LineString outer = LineString.fromLngLats(lines);
-		Polygon poly = Polygon.fromOuterInner(outer);
+		LineString outer = LineString.fromLngLats(linepoints); // Create a LineString object from those points
+		Polygon poly = Polygon.fromOuterInner(outer); // Convert the LineString object to a polygon.
 
 		return poly;
 	}
 
+	/**
+	 * Creates a complete feature object composed of: A polygon with vertices found
+	 * from the vertices matrix, a color found using the data matrix.
+	 * 
+	 * @param lng Longitude index pointing to the top left corner of the polygon to
+	 *            be formed. It's also used to find the color.
+	 * @param lat Latitude index pointing to the top left corner of the polygon to
+	 *            be formed. It's also used to find the color.
+	 * @return A feature with a polygon, a fill color, an opacity of 0.75 and an
+	 *         rgb-string property referencing to the color.
+	 */
 	protected Feature generateFeature(int lng, int lat) {
-		String color = colorFromData(this.data[lat][lng]);
-		Polygon poly = generatePolygon(lng, lat);
-		Feature f = Feature.fromGeometry((Geometry) poly);
-		f.addNumberProperty("fill-opacity", 0.75);
-		f.addStringProperty("rgb-string", color);
-		f.addStringProperty("fill", color);
+		String color = colorFromData(this.data[lat][lng]); // Find color.
+		Polygon poly = generatePolygon(lng, lat); // Make the polygon.
+		Feature f = Feature.fromGeometry((Geometry) poly); // Turn the polygon into a Geometry.
+		f.addNumberProperty("fill-opacity", 0.75); // Adds 'fill-opacity' property
+		f.addStringProperty("rgb-string", color); // Adds 'rgb-string' property
+		f.addStringProperty("fill", color); // Adds the fill color property.
 
 		return f;
 	}

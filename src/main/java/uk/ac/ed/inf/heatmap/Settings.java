@@ -4,6 +4,9 @@ import com.mapbox.geojson.Point;
 
 public final class Settings {
 
+	private Settings() {
+	}
+
 	public static final int lngDim = 10;
 	public static final int latDim = 10;
 

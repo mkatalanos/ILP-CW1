@@ -30,22 +30,28 @@ public final class Reader {
 			for (int lng = 0; lng < Settings.lngDim; lng++)
 				data[lat][lng] = -1;
 
+		// Open the file
 		FileReader fr = new FileReader(filename);
 		BufferedReader br = new BufferedReader(fr);
 
+		// Start reading line by line
 		int line = 0;
 		String nextLine = br.readLine();
 		while (nextLine != null && line < Settings.latDim) {
-			String[] substring = nextLine.replaceFirst("^[^0-9]+", "").split("[^0-9]+");
+			String[] substring = nextLine.replaceFirst("^[^0-9]+", "").split("[^0-9]+"); // Cleanup any non numeric
+																							// characters that might be
+																							// accidental and split the
+																							// line
 			int iterLength = Math.min(substring.length, Settings.lngDim);
 			for (int i = 0; i < iterLength; i++)
-				data[line][i] = Integer.parseInt(substring[i]);
+				data[line][i] = Integer.parseInt(substring[i]); // Fill up the data matrix
 
 			line++;
 			nextLine = br.readLine();
 		}
+
 		br.close();
-		
+
 		return data;
 	}
 
