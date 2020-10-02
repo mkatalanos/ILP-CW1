@@ -38,6 +38,7 @@ public final class Reader {
 		int line = 0;
 		String nextLine = br.readLine();
 		while (nextLine != null && line < Settings.latDim) {
+
 			String[] substring = nextLine.replaceFirst("^[^0-9]+", "").split("[^0-9]+"); // Cleanup any non numeric
 																							// characters that might be
 																							// accidental and split the

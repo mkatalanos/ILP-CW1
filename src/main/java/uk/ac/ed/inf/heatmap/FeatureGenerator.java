@@ -141,12 +141,12 @@ public class FeatureGenerator {
 	 *         rgb-string property referencing to the color.
 	 */
 	protected Feature generateFeature(int lng, int lat) {
-		String color = colorFromData(this.data[lat][lng]); // Find color.
-		Polygon poly = generatePolygon(lng, lat); // Make the polygon.
+		String color = colorFromData(this.data[lat][lng]);
+		Polygon poly = generatePolygon(lng, lat);
 		Feature f = Feature.fromGeometry((Geometry) poly); // Turn the polygon into a Geometry.
-		f.addNumberProperty("fill-opacity", 0.75); // Adds 'fill-opacity' property
-		f.addStringProperty("rgb-string", color); // Adds 'rgb-string' property
-		f.addStringProperty("fill", color); // Adds the fill color property.
+		f.addNumberProperty("fill-opacity", 0.75);
+		f.addStringProperty("rgb-string", color);
+		f.addStringProperty("fill", color);
 
 		return f;
 	}
