@@ -17,9 +17,12 @@ public final class Settings {
 	}
 
 	/**
-	 * Determines the dimensions of the generated heatmap.
+	 * Determines the longitude dimensions of the generated heatmap.
 	 */
 	public static final int lngDim = 10;
+	/**
+	 * Determines the latitude dimensions of the generated heatmap.
+	 */
 	public static final int latDim = 10;
 
 	/**
