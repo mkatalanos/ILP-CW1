@@ -23,7 +23,8 @@ public final class Reader {
 	 * @throws IOException In case the file is not found
 	 */
 	public static int[][] scanFile(String filename) throws IOException {
-		int[][] data = new int[Settings.latDim][Settings.lngDim]; // data[lat][lng]
+
+		int[][] data = new int[Settings.latDim][Settings.lngDim];
 
 		// Initialize with -1 in case there's data missing from the file
 		for (int lat = 0; lat < Settings.latDim; lat++)

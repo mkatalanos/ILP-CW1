@@ -1,7 +1,5 @@
 package uk.ac.ed.inf.heatmap;
 
-import java.util.List;
-
 import java.util.ArrayList;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
@@ -61,8 +59,8 @@ public class GeoMapper {
 	 * @return A heatmap in the form of a FeatureCollection.
 	 */
 	public static FeatureCollection generateHeatmap(int[][] data) {
-		List<Feature> heatmap = new ArrayList<>();
-		FeatureGenerator fg = new FeatureGenerator(vertices, data);
+		var heatmap = new ArrayList<Feature>();
+		var fg = new FeatureGenerator(vertices, data);
 
 		for (int lat = 0; lat < Settings.latDim; lat++) {
 			for (int lng = 0; lng < Settings.lngDim; lng++) {

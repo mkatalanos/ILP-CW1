@@ -118,7 +118,8 @@ public class FeatureGenerator {
 	 *         Point pointed from vertices[lat][lng].
 	 */
 	private Polygon generatePolygon(int lng, int lat) {
-		List<Point> linepoints = new ArrayList<>(); // Create a list of points that will hold the 4 lines.
+		var linepoints = new ArrayList<Point>(); // Create a list of points that will hold the 4 lines.
+	
 		for (int side = 0; side <= 3; side++) {
 			linepoints.addAll(generateLine(lng, lat, side)); // Add the points that form the lines of each side.
 		}
