@@ -11,7 +11,7 @@ import java.io.IOException;
  * 
  *
  */
-public final class Reader {
+public class Reader {
 	/**
 	 * This method attempts to open a file, which then parses line by line and puts
 	 * it in a 2x2 matrix with dimensions specified by the Settings.java file
@@ -42,7 +42,8 @@ public final class Reader {
 
 			String[] substring = nextLine.replaceFirst("^[^0-9]+", "").split("[^0-9]+"); // Cleanup any non numeric
 																							// characters that might be
-																							// accidental and split the
+																							// accidentally there and
+																							// split the
 																							// line
 			int iterLength = Math.min(substring.length, Settings.lngDim);
 			for (int i = 0; i < iterLength; i++)

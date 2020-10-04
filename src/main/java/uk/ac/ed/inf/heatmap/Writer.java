@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * This is the class that holds the functionallity that writes the file.
+ * This is the class that holds the functionality that writes the file.
  * 
  * @author Marios Katalanos
  *
@@ -31,7 +31,7 @@ public class Writer {
 	void writeToFile() throws IOException {
 		String path = "heatmap.geojson";
 
-		FileWriter fw = new FileWriter(path, false);
+		FileWriter fw = new FileWriter(path);
 		fw.write(this.heatmapToWrite.toJson());
 
 		fw.close();

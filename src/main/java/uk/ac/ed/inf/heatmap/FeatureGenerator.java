@@ -11,7 +11,7 @@ import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Geometry;
 
 /**
- * This is class is used to generate the features that are used in GeoMapper. It
+ * This class is used to generate the features that are used in GeoMapper. It
  * contains private methods that are used as tools for aiding the creation of
  * such features. It also contains a function that is used for actually creating
  * a feature.
@@ -100,7 +100,7 @@ public class FeatureGenerator {
 			points.add(vertices[lat][lng]);
 			break;
 		default: // NEVER CALLED
-			return null;
+			break;
 		}
 
 		return points;
@@ -119,7 +119,7 @@ public class FeatureGenerator {
 	 */
 	private Polygon generatePolygon(int lng, int lat) {
 		var linepoints = new ArrayList<Point>(); // Create a list of points that will hold the 4 lines.
-	
+
 		for (int side = 0; side <= 3; side++) {
 			linepoints.addAll(generateLine(lng, lat, side)); // Add the points that form the lines of each side.
 		}
