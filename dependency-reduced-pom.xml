@@ -5,7 +5,7 @@
   <artifactId>heatmap</artifactId>
   <name>heatmap</name>
   <version>0.0.1-SNAPSHOT</version>
-  <url>http://www.example.com</url>
+  <url>https://course.inf.ed.ac.uk/ilp</url>
   <build>
     <plugins>
       <plugin>

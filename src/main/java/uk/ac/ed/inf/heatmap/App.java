@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.mapbox.geojson.FeatureCollection;
 
-//Main Program
 /**
  * Coursework 1: heatmap
  * 
